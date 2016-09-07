@@ -1,5 +1,6 @@
 package de.predic8.cloud;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +22,8 @@ public class NameController {
 		shortNameToFullName.put("tpolley", "Tobias Polley");
 	}
 
-	@RequestMapping("/name/{shortName}")
-	public String name(String shortName) {
+	@RequestMapping("/names/{shortName}")
+	public String name(@PathVariable("shortName") String shortName) {
 		return shortNameToFullName.get(shortName);
 	}
 }
