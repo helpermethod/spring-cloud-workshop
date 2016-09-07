@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Oliver Weiler (weiler@predic8.de)
@@ -12,11 +11,11 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class HelloController {
 	@Autowired
-	private RestTemplate restTemplate;
+	private NamesClient namesClient;
 
 	@RequestMapping("/greetings/{shortName}")
 	public String hello(@PathVariable("shortName") String shortName) {
-		String fullName = restTemplate.getForObject("http://name-service/names/{shortName}", String.class, shortName);
+		String fullName = namesClient.names(shortName);
 
 		return "Hello " + fullName + "!";
 	}
