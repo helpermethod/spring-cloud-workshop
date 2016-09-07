@@ -7,4 +7,10 @@
     <groupId>de.predic8.cloud</groupId>
     <artifactId>spring-cloud-workshop</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>eureka-server</module>
+        <module>hello-service</module>
+        <module>name-service</module>
+    </modules>
 </project>
