@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloController {
+//	@Autowired
+//	private NameResolver nameResolver;
 	@Autowired
 	private NamesClient namesClient;
 
 	@RequestMapping("/greetings/{shortName}")
 	public String hello(@PathVariable("shortName") String shortName) {
+//		String fullName = nameResolver.names(shortName);
 		String fullName = namesClient.names(shortName);
 
 		return "Hello " + fullName + "!";

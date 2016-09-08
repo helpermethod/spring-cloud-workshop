@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * @author Oliver Weiler (weiler@predic8.de)
  */
-@FeignClient("name-service")
+@FeignClient(name = "name-service", fallback = NamesClientFallback.class)
 public interface NamesClient {
 	@RequestMapping("/names/{shortName}")
 	String names(@PathVariable("shortName") String shortName);
